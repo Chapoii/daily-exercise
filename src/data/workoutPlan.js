@@ -1,0 +1,329 @@
+// 每周锻炼计划数据
+export const weeklyPlan = [
+  {
+    day: 1, // 周一
+    name: "周一",
+    title: "全身燃脂入门",
+    description: "适合新手的全身燃脂训练",
+    type: "workout",
+    exercises: [
+      {
+        name: "开合跳",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "保持节奏，手臂和腿同时展开",
+      },
+      {
+        name: "深蹲",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "背部挺直，膝盖不要超过脚尖",
+      },
+      {
+        name: "跪姿俯卧撑",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "膝盖着地，身体保持直线",
+      },
+      {
+        name: "平板支撑",
+        duration: 30,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "身体保持一条直线，不要塌腰",
+      },
+      {
+        name: "高抬腿",
+        duration: 30,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "尽量抬高膝盖，保持快速节奏",
+      },
+    ],
+  },
+  {
+    day: 2, // 周二
+    name: "周二",
+    title: "核心 + 腰腹",
+    description: "强化核心肌群和腰腹力量",
+    type: "workout",
+    exercises: [
+      {
+        name: "卷腹",
+        duration: 15,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "用腹部力量带动上半身，不要用手拉脖子",
+      },
+      {
+        name: "仰卧抬腿",
+        duration: 12,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "双腿并拢，缓慢抬起和放下",
+      },
+      {
+        name: "俄罗斯转体",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "转动上半身，感受腹部侧肌发力",
+      },
+      {
+        name: "平板支撑",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "保持身体稳定，核心收紧",
+      },
+      {
+        name: "臀桥",
+        duration: 20,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "用臀部力量抬起身体，顶峰收缩",
+      },
+    ],
+  },
+  {
+    day: 3, // 周三
+    name: "周三",
+    title: "轻量有氧 + 放松",
+    description: "轻度有氧运动，帮助身体恢复",
+    type: "cardio",
+    exercises: [
+      {
+        name: "慢开合跳",
+        duration: 30,
+        sets: 4,
+        restTime: 15,
+        unit: "time",
+        note: "放慢节奏，保持呼吸均匀",
+      },
+      {
+        name: "原地快走/踏步",
+        duration: 300, // 5 分钟
+        sets: 1,
+        restTime: 0,
+        unit: "time",
+        note: "保持稳定的节奏，手臂自然摆动",
+      },
+      {
+        name: "全身拉伸",
+        duration: 600, // 10 分钟
+        sets: 1,
+        restTime: 0,
+        unit: "time",
+        note: "重点拉伸腿部、背部和肩部",
+      },
+    ],
+  },
+  {
+    day: 4, // 周四
+    name: "周四",
+    title: "下肢 + 翘臀",
+    description: "强化下肢力量和臀部线条",
+    type: "workout",
+    exercises: [
+      {
+        name: "标准深蹲",
+        duration: 15,
+        sets: 4,
+        restTime: 20,
+        unit: "reps",
+        note: "双脚与肩同宽，下蹲至大腿平行地面",
+      },
+      {
+        name: "弓步蹲",
+        duration: 12,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "每侧 12 次，前后腿都成 90 度",
+      },
+      {
+        name: "臀桥",
+        duration: 20,
+        sets: 4,
+        restTime: 20,
+        unit: "reps",
+        note: "顶峰收缩臀部，保持 1 秒",
+      },
+      {
+        name: "侧抬腿",
+        duration: 15,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "每侧 15 次，感受臀部外侧发力",
+      },
+      {
+        name: "靠墙静蹲",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "背部贴墙，大腿与地面平行",
+      },
+    ],
+  },
+  {
+    day: 5, // 周五
+    name: "周五",
+    title: "全身综合燃脂",
+    description: "高强度全身燃脂训练",
+    type: "workout",
+    exercises: [
+      {
+        name: "波比跳简化版",
+        duration: 10,
+        sets: 3,
+        restTime: 30,
+        unit: "reps",
+        note: "省略俯卧撑和跳跃，降低难度",
+      },
+      {
+        name: "高抬腿",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "快速抬腿，保持高心率",
+      },
+      {
+        name: "深蹲跳",
+        duration: 12,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "深蹲后向上跳起，落地缓冲",
+      },
+      {
+        name: "登山跑",
+        duration: 40,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "俯卧撑姿势，交替提膝",
+      },
+      {
+        name: "平板支撑",
+        duration: 45,
+        sets: 3,
+        restTime: 20,
+        unit: "time",
+        note: "保持核心收紧，身体稳定",
+      },
+    ],
+  },
+  {
+    day: 6, // 周六
+    name: "周六",
+    title: "肩背 + 体态",
+    description: "改善体态，强化肩背力量",
+    type: "workout",
+    exercises: [
+      {
+        name: "靠墙站立",
+        duration: 60,
+        sets: 3,
+        restTime: 15,
+        unit: "time",
+        note: "后脑勺、肩、臀、脚跟贴墙",
+      },
+      {
+        name: "超人式",
+        duration: 15,
+        sets: 3,
+        restTime: 20,
+        unit: "reps",
+        note: "俯卧，同时抬起手臂和腿，保持 2 秒",
+      },
+      {
+        name: "扩胸运动",
+        duration: 60,
+        sets: 3,
+        restTime: 15,
+        unit: "time",
+        note: "手臂向后展开，感受胸部拉伸",
+      },
+      {
+        name: "猫牛式",
+        duration: 60,
+        sets: 3,
+        restTime: 15,
+        unit: "time",
+        note: "交替拱背和塌腰，放松脊柱",
+      },
+      {
+        name: "手臂后伸",
+        duration: 40,
+        sets: 3,
+        restTime: 15,
+        unit: "time",
+        note: "手臂向后伸展，强化肩后束",
+      },
+    ],
+  },
+  {
+    day: 0, // 周日
+    name: "周日",
+    title: "完全休息/轻拉伸",
+    description: "让身体恢复的一天",
+    type: "rest",
+    exercises: [
+      {
+        name: "全身拉伸",
+        duration: 600, // 10 分钟
+        sets: 1,
+        restTime: 0,
+        unit: "time",
+        note: "轻柔拉伸，放松全身肌肉",
+      },
+      {
+        name: "泡沫滚腿",
+        duration: 300, // 5 分钟
+        sets: 1,
+        restTime: 0,
+        unit: "time",
+        note: "放松腿部肌肉",
+      },
+      {
+        name: "散步",
+        duration: 900, // 15 分钟
+        sets: 1,
+        restTime: 0,
+        unit: "time",
+        note: "轻松散步，促进血液循环",
+      },
+    ],
+  },
+];
+
+// 根据日期获取当天的训练计划
+export function getTodayWorkout() {
+  const today = new Date().getDay();
+  // 转换日期索引：周日 (0) -> 6, 周一 (1) -> 0, 周二 (2) -> 1, ..., 周六 (6) -> 5
+  const index = today === 0 ? 6 : today - 1;
+  return weeklyPlan[index];
+}
+
+// 根据星期几获取训练计划 (1=周一，2=周二，..., 6=周六，0=周日)
+export function getWorkoutByDay(day) {
+  // 转换日期索引：周日 (0) -> 6, 周一 (1) -> 0, 周二 (2) -> 1, ..., 周六 (6) -> 5
+  const index = day === 0 ? 6 : day - 1;
+  return weeklyPlan[index];
+}
