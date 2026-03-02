@@ -1,8 +1,6 @@
 <template>
   <div class="workout-detail-container">
-    <button class="back-btn" @click="goBack">
-      ← 返回
-    </button>
+    <button class="back-btn" @click="goBack">← 返回</button>
 
     <div v-if="workout" class="workout-card">
       <div class="workout-header">
@@ -11,13 +9,42 @@
           {{ getWorkoutTypeText(workout.type) }}
         </span>
       </div>
-      
+
       <p class="workout-description">{{ workout.description }}</p>
 
       <div class="exercise-list">
-        <h3>训练动作</h3>
-        <div 
-          v-for="(exercise, index) in workout.exercises" 
+        <h3>🔥 热身动作</h3>
+        <div
+          v-for="(exercise, index) in warmupExercises"
+          :key="index"
+          class="exercise-item warmup-item"
+        >
+          <div class="exercise-number warmup-number">{{ index + 1 }}</div>
+          <div class="exercise-content">
+            <h4>{{ exercise.name }}</h4>
+            <div class="exercise-details">
+              <span v-if="exercise.unit === 'time'">
+                ⏱️ {{ formatDuration(exercise.duration) }}
+              </span>
+              <span v-else> 🔄 {{ exercise.duration }}次 </span>
+              <span class="separator">•</span>
+              <span>📊 {{ exercise.sets }}组</span>
+              <span v-if="exercise.restTime > 0" class="separator">•</span>
+              <span v-if="exercise.restTime > 0"
+                >😴 休息{{ exercise.restTime }}秒</span
+              >
+            </div>
+            <p class="exercise-note" v-if="exercise.note">
+              💡 {{ exercise.note }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise-list">
+        <h3>💪 正式训练</h3>
+        <div
+          v-for="(exercise, index) in mainExercises"
           :key="index"
           class="exercise-item"
         >
@@ -28,13 +55,13 @@
               <span v-if="exercise.unit === 'time'">
                 ⏱️ {{ formatDuration(exercise.duration) }}
               </span>
-              <span v-else>
-                🔄 {{ exercise.duration }}次
-              </span>
+              <span v-else> 🔄 {{ exercise.duration }}次 </span>
               <span class="separator">•</span>
               <span>📊 {{ exercise.sets }}组</span>
               <span v-if="exercise.restTime > 0" class="separator">•</span>
-              <span v-if="exercise.restTime > 0">😴 休息{{ exercise.restTime }}秒</span>
+              <span v-if="exercise.restTime > 0"
+                >😴 休息{{ exercise.restTime }}秒</span
+              >
             </div>
             <p class="exercise-note" v-if="exercise.note">
               💡 {{ exercise.note }}
@@ -43,55 +70,64 @@
         </div>
       </div>
 
-      <button class="start-btn" @click="startWorkout">
-        🚀 开始训练
-      </button>
+      <button class="start-btn" @click="startWorkout">🚀 开始训练</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { weeklyPlan } from '../data/workoutPlan'
-import { useWorkoutStore } from '../stores/workoutStore'
+import { computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { weeklyPlan } from "../data/workoutPlan";
+import { useWorkoutStore } from "../stores/workoutStore";
 
-const router = useRouter()
-const route = useRoute()
-const workoutStore = useWorkoutStore()
+const router = useRouter();
+const route = useRoute();
+const workoutStore = useWorkoutStore();
 
 const workout = computed(() => {
-  const dayIndex = parseInt(route.params.day)
-  return weeklyPlan[dayIndex]
-})
+  const dayIndex = parseInt(route.params.day);
+  return weeklyPlan[dayIndex];
+});
+
+// 分离热身动作和正式训练动作
+const warmupExercises = computed(() => {
+  if (!workout.value) return [];
+  return workout.value.exercises.filter((ex) => ex.isWarmup);
+});
+
+const mainExercises = computed(() => {
+  if (!workout.value) return [];
+  return workout.value.exercises.filter((ex) => !ex.isWarmup);
+});
 
 const getWorkoutTypeText = (type) => {
   const typeMap = {
-    'workout': '力量训练',
-    'cardio': '有氧运动',
-    'rest': '休息日'
-  }
-  return typeMap[type] || '训练'
-}
+    workout: "力量训练",
+    cardio: "有氧运动",
+    rest: "休息日",
+  };
+  return typeMap[type] || "训练";
+};
 
 const formatDuration = (seconds) => {
   if (seconds >= 60) {
-    const minutes = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return secs > 0 ? `${minutes}分${secs}秒` : `${minutes}分钟`
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return secs > 0 ? `${minutes}分${secs}秒` : `${minutes}分钟`;
   }
-  return `${seconds}秒`
-}
+  return `${seconds}秒`;
+};
 
 const startWorkout = () => {
-  const dayIndex = parseInt(route.params.day)
-  workoutStore.startTraining(dayIndex)
-  router.push('/training')
-}
+  const dayIndex = parseInt(route.params.day);
+  workoutStore.startTraining(dayIndex);
+  router.push("/training");
+};
 
 const goBack = () => {
-  router.push('/')
-}
+  router.push("/");
+};
 </script>
 
 <style scoped>
@@ -171,11 +207,30 @@ const goBack = () => {
   font-size: 1.3rem;
 }
 
+.exercise-list:first-of-type h3 {
+  color: #e67e22;
+}
+
+.exercise-list:last-of-type h3 {
+  color: #667eea;
+}
+
 .exercise-item {
   display: flex;
   gap: 15px;
   padding: 20px 0;
   border-bottom: 1px solid #ecf0f1;
+}
+
+.warmup-item {
+  background: #fff8f0;
+  margin: 0 -30px;
+  padding: 20px 30px;
+  border-left: 4px solid #e67e22;
+}
+
+.warmup-number {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
 }
 
 .exercise-item:last-child {
@@ -252,11 +307,11 @@ const goBack = () => {
   .workout-header h1 {
     font-size: 1.5rem;
   }
-  
+
   .exercise-item {
     flex-direction: column;
   }
-  
+
   .exercise-number {
     width: 35px;
     height: 35px;
